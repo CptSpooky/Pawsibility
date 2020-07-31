@@ -1,0 +1,57 @@
+body,html {
+  height: 100%;
+}
+
+.footer {
+  padding:5px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(103, 61, 194);
+  color: #fff;
+  border-top: 3px solid #aaa;
+}
+
+
+
+.jumbotron {
+  background-color: rgb(184, 161, 233) !important;
+  border-bottom: 3px solid #aaa;
+}
+
+.navbar {
+  background-color: rgb(103, 61, 194) !important;
+  border-bottom: 3px solid #aaa;
+}
+
+.center {
+  text-align: center;
+}
+
+.top-margin {
+  margin-top: 5%;
+}
+
+.border {
+  border: 3px solid #333;
+  border-radius: 10px;
+  width: 25%;
+  padding: 20px;
+}
+
+.border-top {
+  border-top: 3px solid #333;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 20px;
+}
+
+.pad {
+  padding:10px;
+}
+
+.center-el {
+  margin-left: auto;
+  margin-right: auto;
+}

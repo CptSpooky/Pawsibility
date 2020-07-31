@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>
+        Pawsibilities - Search
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Pawsibilities</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="search.html">Search</a>
+          <a class="nav-item nav-link disabled" href="#">Results</a>
+
+        </div>
+      </div>
+    </nav>
+
+    
+
+
+      <!-- form for zip code, in case it needs to be changed or fixed -->
+
+    <div class="container border top-margin">
+
+      <form>
+        <div class="form-check">
+          <div class="row">
+            <div class="col-md-12"><label for="userZip"><h5>Zip Code</h5></label></div></div>
+          
+           <div class="row">
+             <div class="col-md-4"><input type="text" pattern="[0-9]{5}" class="form-control" id="userZip" placeholder="Enter Zip"></div>
+  
+        </div>
+      </div>
+      </form>
+
+            <!-- radials for species select -->
+
+    <div class="form-check border-top">
+     <label class="form-check-label"><h5>Dog or Cat?</h5>
+        <input class="form-check-input" type="radio" name="exampleRadios" id="speciesCheck" value="dog">
+        Dog
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="speciesCheck" value="cat">
+        Cat
+      </label>
+    </div>
+
+    <!-- breed input -->
+
+    <div class="form-check border-top">
+      <label class="" for="breed-select"><h5>What breed would you like?</h5></label>
+      <div>
+        <input class="form-control col-md-6" type="text" value="" id="inputBreed">
+      </div>
+    </div>
+    
+      <!-- age check boxes -->
+    <div class="form-check border-top">
+      <label class="form-check-label"><h5>What age(s) would you prefer?</h5>
+        <input class="form-check-input" id="ageCheck" type="checkbox" value="baby">
+        Baby
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" id="ageCheck" type="checkbox" value="adolescent">
+        Adolescent
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" id="ageCheck" type="checkbox" value="adult">
+        Adult
+      </label>
+    </div>
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" id="ageCheck" type="checkbox" value="elder">
+        Elderly
+      </label>
+    </div>
+
+    <div class="border-top form-check">
+      <h5>Male or Female?</h5>
+    <select class="form-control col-md-6">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+
+    </select>
+  </div>
+
+   </div>
+
+
+    <footer class="footer">
+      <div class="container">
+        &copy Project 1
+      </div>
+      </footer>
+    <script type="javascript" src="script.js"></script>
+  </body>
+</html>
