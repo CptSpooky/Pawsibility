@@ -1,5 +1,6 @@
 body,html {
   height: 100%;
+  font-family: 'Poppins', sans-serif;
 }
 
 .footer {
@@ -8,12 +9,10 @@ body,html {
   bottom: 0;
   width: 100%;
   text-align: center;
-  background-color: rgb(103, 61, 194);
-  color: #fff;
-  border-top: 3px solid #aaa;
+  background-color: #FDC161;
+  color: #ECEDEF;
+  border-top: 3px solid #A8C3B9;
 }
-
-
 
 .jumbotron {
   background-color: rgb(184, 161, 233) !important;
@@ -21,8 +20,8 @@ body,html {
 }
 
 .navbar {
-  background-color: rgb(103, 61, 194) !important;
-  border-bottom: 3px solid #aaa;
+  background-color: #181E30 !important;
+  border-bottom: 3px solid #A8C3B9;
 }
 
 .center {
@@ -54,4 +53,22 @@ body,html {
 .center-el {
   margin-left: auto;
   margin-right: auto;
+}
+
+/*results page*/
+
+.results-text {
+  padding: 25px; 
+}
+
+.list-group{
+  padding: 25px;
+  max-height: 800px;
+  margin-bottom: 10px;
+  overflow:scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.card-body{
+  text-align: center;
 }
