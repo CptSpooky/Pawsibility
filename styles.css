@@ -3,6 +3,11 @@ body,html {
   font-family: 'Poppins', sans-serif;
 }
 
+.display-4 {
+  font-weight: bold;
+  color: #CF6D79;
+}
+
 .footer {
   padding:5px;
   position: fixed;
@@ -15,7 +20,7 @@ body,html {
 }
 
 .jumbotron {
-  background-color: rgb(184, 161, 233) !important;
+  background-color: #A8C3B9 !important;
   border-bottom: 3px solid #aaa;
 }
 
@@ -33,14 +38,14 @@ body,html {
 }
 
 .border {
-  border: 3px solid #333;
+  border: 3px solid #A8C3B9;
   border-radius: 10px;
   width: 25%;
   padding: 20px;
 }
 
 .border-top {
-  border-top: 3px solid #333;
+  border-top: 3px solid #A8C3B9;
   padding-top: 3px;
   padding-bottom: 3px;
   margin-top: 20px;
@@ -71,4 +76,19 @@ body,html {
 
 .card-body{
   text-align: center;
+}
+
+#map {
+  margin-top: 10px;
+  position: center;
+  height: 100%;
+}
+
+.img-thumbnail {
+  float: left;
+  margin-right: 10px;
+}
+
+.result-list {
+    margin:0px;
 }
