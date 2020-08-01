@@ -1,6 +1,15 @@
 body,html {
   height: 100%;
   font-family: 'Poppins', sans-serif;
+  background-image: url("bg.jpg");
+  background-size: stretch;
+  background-position: center;
+}
+
+.bg-hero {
+  background-image: url("bg.jpg");
+  background-size: stretch;
+  background-position: center;
 }
 
 .display-4 {
@@ -19,9 +28,51 @@ body,html {
   border-top: 3px solid #A8C3B9;
 }
 
-.jumbotron {
-  background-color: #A8C3B9 !important;
-  border-bottom: 3px solid #aaa;
+
+.lead {
+  font-weight:bold;
+}
+
+.display-4 {
+  font-weight: bolder;
+}
+
+.btn-outline-primary {
+  color: #181E30;
+  border-color: #181E30;
+}
+
+.btn-outline-primary:hover {
+  background-color: #cf6d79;
+  color: #fff;
+  border-color: #181E30;
+}
+
+.btn-outline-primary:active {
+  background-color: #cf6d79;
+}
+
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0 .2rem #cf6d79 !important;
+}
+
+.center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display:flex;
+  vertical-align: baseline;
+  height: 40%;
+}
+
+.modal-content {
+  background-color: #ffe2e5;
+}
+
+.modal-header {
+  background-color: #181E30;
+  color: #fff;
+  border-bottom: 3px solid #A8C3B9;
 }
 
 .navbar {
@@ -56,8 +107,12 @@ body,html {
 }
 
 .center-el {
+  display: flex;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 200px;
+  position: relative;
 }
 
 /*results page*/
