@@ -12,6 +12,11 @@ body,html {
   background-position: center;
 }
 
+.display-4 {
+  font-weight: bold;
+  color: #CF6D79;
+}
+
 .footer {
   padding:5px;
   position: fixed;
@@ -22,6 +27,7 @@ body,html {
   color: #ECEDEF;
   border-top: 3px solid #A8C3B9;
 }
+
 
 .lead {
   font-weight:bold;
@@ -83,14 +89,14 @@ body,html {
 }
 
 .border {
-  border: 3px solid #333;
+  border: 3px solid #A8C3B9;
   border-radius: 10px;
   width: 25%;
   padding: 20px;
 }
 
 .border-top {
-  border-top: 3px solid #333;
+  border-top: 3px solid #A8C3B9;
   padding-top: 3px;
   padding-bottom: 3px;
   margin-top: 20px;
@@ -125,4 +131,19 @@ body,html {
 
 .card-body{
   text-align: center;
+}
+
+#map {
+  margin-top: 10px;
+  position: center;
+  height: 100%;
+}
+
+.img-thumbnail {
+  float: left;
+  margin-right: 10px;
+}
+
+.result-list {
+    margin:0px;
 }
