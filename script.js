@@ -1,26 +1,28 @@
+// pseudo code
+// 1. create variable selectors for the user inputs and submit button
+// 2. create an onclick function with the submit button
+// 3. inside of the onclick function, create an ajax object and success function
+// 4. use the ajax response to get the users inputs for zip code, species, breed, age, and gender
+// 5. dynamically create elements for the results page based on the criteria the user gives
+// 6. append those elements to the HTML results page
+// 7. when the user clicks on the shelter the pet is at, it brings up a map showing the shelter, using mapbox API 
+
 $(document).ready(function() {
-  //Pseudocode for landing page
-// 1. use a geolocation API to ask user to share location (Geolocation.getCurrentPosition())
-// if not
-// 2. create a variable to select the ID of the zip code input
-// 3. create a variable to select the ID of the get started button
-// 4. create an event listener or .on("click") for the start button with an anonymous function (ex = submitBtn.on("click", function(){
+// global variables
+var zipCode = $("#userZip").val();
+var species = $("#speciesCheck").val();
+var breed = $("#inputBreed").val();
+var age = $("#ageCheck").val();
+var gender = $("").val();
+var submitBtn = $("#critSubmit");
+
+// mapbox API call
+var mapboxURL = ""
 
 
-// 5. When the submit button is clicked 
-// -show a list of all pets in that zip code
-// & show the input form so the user can select more specific search criteria
-// this can be done by adding a .hide class to all the content on the landing page and removing hide classes from the div that holds the input form and stores the pet data
-// or... the submit button can link to another HTML sheet with the form and pet data
 
 
-//pseudocode for the search/input form
-// 1. show the input fields/form 
-// - can be done by removing a .hide class or by creating the form in a seperate html page that is linked from the submit button
-// 2. show the pets that are in that zip code, with no other parameters to specify the search
-// 3. create variables to select the IDs associated with each input field (speciesInput.value())
-// 4. create a variable that selectes the ID of the new submit button 
-// 5. use $.ajax({}).then(function(data){}) to collect data from API (species, breed, age, gender)
-// 6. enter the selected content into text() or HTML()
-// 7. append to the container div that will store the pet list
+// petfinder API call
+var petfinderURL = "https://api.petfinder.com/v2/oauth2/VPazYlCS5jiHVKYEa29a1eAD74ZNDsYvXJ0JYtdykdrfmRjsiC"
+
 });
