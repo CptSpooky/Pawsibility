@@ -53,13 +53,13 @@ localStorage.setItem('gender: ', gender);
 // mapbox API call
 var apiToken = "pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw";
 var searchValue = $(""); // add the address of the shelter from data pulled from petfinder APU
-var mapboxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + searchValue + ".json?" + apiToken;
+var mapboxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + searchValue + ".json?access_token=" + apiToken;
 
 $.ajax({
   url: mapboxURL,
   method: 'GET'
 }).then(function() {
-  
+
 })
 
 
