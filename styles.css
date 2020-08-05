@@ -14,7 +14,8 @@ body,html {
 
 .display-4 {
   font-weight: bold;
-  color: #CF6D79;
+  text-shadow: 2px 2px 4px #cf6d79;
+  color: #A8C3B9;
 }
 
 .footer {
@@ -43,7 +44,7 @@ body,html {
 }
 
 .btn-outline-primary:hover {
-  background-color: #cf6d79;
+  background-color: #A8C3B9;
   color: #fff;
   border-color: #181E30;
 }
@@ -143,4 +144,9 @@ body,html {
   margin-right: 10px;
   width: 50px; 
   height: 50px;
+}
+
+h2 {
+  color: #181E30;
+  text-shadow: 2px 2px 4px #cf6d79;
 }
