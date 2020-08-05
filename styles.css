@@ -134,9 +134,7 @@ body,html {
 }
 
 #map {
-  margin-top: 10px;
-  position: center;
-  height: 100vw;
+  height: 180px;
 }
 
 .img-thumbnail {
