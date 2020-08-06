@@ -1,14 +1,16 @@
 body,html {
   height: 100%;
   font-family: 'Poppins', sans-serif;
-  background-image: url("bg.jpg");
-  background-size: stretch;
-  background-position: center;
+}
+
+h2 {
+  color: #181E30;
+  text-shadow: 2px 2px 4px #cf6d79;
 }
 
 .bg-hero {
   background-image: url("bg.jpg");
-  background-size: stretch;
+  background-size: cover;
   background-position: center;
 }
 
@@ -55,6 +57,11 @@ body,html {
 
 .btn-outline-primary:focus {
   box-shadow: 0 0 0 .2rem #cf6d79 !important;
+}
+
+.btn-fail {
+  background-color: #711111;
+  color: white;
 }
 
 .center-flex {
@@ -134,17 +141,16 @@ body,html {
   text-align: center;
 }
 
-#map {
-  height: 180px;
-}
-
 .img-thumbnail {
   margin-right: 10px;
   width: 50px; 
   height: 50px;
 }
 
-h2 {
-  color: #181E30;
-  text-shadow: 2px 2px 4px #cf6d79;
+.bg-results {
+  background-image: url("bg_white.jpg")
+}
+
+#map {
+  height: 180px;
 }
