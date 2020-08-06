@@ -8,6 +8,7 @@
         Pawsibilities - Results
     </title>
 
+    <!-- Stylesheets Fonts and Scripts -->
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
@@ -25,7 +26,9 @@
     <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.2.0/mapbox-gl-geocoder.css' type='text/css' />
 
   </head>
-  <body>
+
+  <body class="bg-results">
+    <!--Nav-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Pawsibilities</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,16 +42,21 @@
       </div>
     </nav>
 
+    <!--Results list title-->
     <div class="results-text">
     <h2>Here are your pawsibilities...</h2>
     </div>
 
+    <!--Results list-->
     <div class="row">
       <div class="col-4">
         <div class="list-group" id="list-results" role="tablist">
-            <a class="nav-link active" id="result-list" href="#"><img src="https://via.placeholder.com/150" alt="pic of pet" class="img-thumbnail">PetName 1</a>
+          <!--Generated list goes here-->
+            <!-- <a class="nav-link active" id="result-list" data-index="0" href="#"><img src="https://via.placeholder.com/150" alt="pic of pet" class="img-thumbnail">PetName 1</a> -->
+        </div>
       </div>
-    </div>
+      
+      <!--Pet specifics-->
       <div class="col-8">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="list-chosen-result" role="tabpanel" aria-labelledby="list-results-list"></div>
@@ -57,24 +65,28 @@
             <div class="card-body">
               <h5 class="card-title">Pet Name</h5>
               <p class="card-text">Full Description goes here.</p>
-              <a href="#" class="btn btn-primary">Shelter Location</a>
+              <a href="" target="" class="btn btn-primary" id="shelterBtn">Learn More</a>
               <div class="card" id="map" style="width: 33rem; height: 15rem;">
                 <div class="card-body">
                   <div id="map">
-                    
+                    <!--Map displayed here-->
                   </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+
+    <!--Footer-->
     <footer class="footer">
       <div class="container">
         &copy Project 1
       </div>
-      </footer>
-    <script type="text/javascript" src="script.js"></script>
+    </footer>
+    
+    <!--Scripts-->
+    <script type="text/javascript" src="results.js"></script>
   </body>
 </html>

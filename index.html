@@ -8,6 +8,8 @@
     <title>
        Pawsibilities
     </title>
+
+    <!--Stylesheets Fonts and Scripts-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap" rel="stylesheet">
@@ -17,24 +19,25 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </head>
+
   <body class="bg-hero">
 
-    
-
+    <!--Nav-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Pawsibilities</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="index.html">Home <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="results.html">Results</a>
-
         </div>
       </div>
     </nav>
     
+    <!--Landing page text-->
     <div class="center center-flex">
       <div class="container">
         <h1 class="display-4">Pawsibilities</h1>
@@ -45,8 +48,7 @@
       </div>
     </div>
 
-
-
+    <!--Modal-->
     <div class="modal" tabindex="-1" id="searchModal" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -56,101 +58,97 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
+          <!-- this is appearing inside the modal -->
           <div class="modal-body">
-
-            <!-- this is appearing inside the modal -->
-
-            <div class="">
-
-              <form>
-                <div class="form-check">
-                  <div class="row">
-                    <div class="col-md-12"><label for="userZip"><h5>Zip Code</h5></label></div></div>
-                  
-                   <div class="row">
-                     <div class="col-md-4"><input type="text" pattern="[0-9]{5}" class="form-control" id="userZip" placeholder="Enter Zip"></div>
-          
+            <form>
+              <div class="form-check">
+                <div class="row">
+                  <div class="col-md-12"><label for="userZip"><h5>Zip Code</h5></label></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4"><input type="text" pattern="[0-9]{5}" class="form-control" id="userZip" placeholder="Enter Zip"></div>
                 </div>
               </div>
-              </form>
-        
-                    <!-- radials for species select -->
-        
+            </form>
+      
+            <!-- radials for species select -->
             <div class="form-check border-top">
-             <label class="form-check-label"><h5>Dog or Cat?</h5>
-                <input class="form-check-input" type="radio" name="exampleRadios" id="speciesCheck" value="dog">
-                Dog
-              </label>
-            </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input class="form-check-input" type="radio" name="exampleRadios" id="speciesCheck" value="cat">
-                Cat
+              <label class="form-check-label" id="inline_test"><h5>Dog or Cat?</h5>
+                <div class="row">
+                  <div class ="col-md-12">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="speciesDog" value="dog">Dog
+                  </div>
+                  <div class ="col-md-12">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="speciesCat" value="cat">Cat
+                  </div>
+                </div>
               </label>
             </div>
         
             <!-- breed input -->
-        
             <div class="form-check border-top">
               <label class="" for="breed-select"><h5>What breed would you like?</h5></label>
-              <div>
-                <input class="form-control col-md-6" type="text" id="inputBreed">
-              </div>
+              <select id="breedSelect" class="form-control col-md-6">
+              <!--Generated breed list goes here-->
+              </select>
             </div>
             
-              <!-- age check boxes -->
+            <!-- Age check boxes -->
             <div class="form-check border-top">
               <label class="form-check-label"><h5>What age(s) would you prefer?</h5>
-                <input class="form-check-input" type="checkbox" name="age" value="baby">
-                Baby
+                <input class="form-check-input" type="checkbox" name="age" value="baby">Baby
               </label>
             </div>
+
             <div class="form-check">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="age" value="adolescent">
-                Adolescent
+                <input class="form-check-input" type="checkbox" name="age" value="young">Young
               </label>
             </div>
+
             <div class="form-check">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="age" value="adult">
-                Adult
+                <input class="form-check-input" type="checkbox" name="age" value="adult">Adult
               </label>
             </div>
+
             <div class="form-check">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" name="age" value="elder">
-                Elderly
+                <input class="form-check-input" type="checkbox" name="age" value="senior">Senior
               </label>
             </div>
-        
+            
+            <!-- Gender -->
             <div class="border-top form-check">
               <h5>Male or Female?</h5>
-            <select id="genderSelect" class="form-control col-md-6">
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-        
-            </select>
-          </div>
-        
-           </div>
+              <select id="genderSelect" class="form-control col-md-6">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
 
           </div>
+
+          <!-- Submit and close buttons -->
           <div class="modal-footer">
             <button type="button" id="critSubmit" class="btn btn-outline-primary">Submit</button>
             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
+
     </div>
 
 
-
+    <!-- Footer -->
     <footer class="footer">
       <div class="container">
         &copy Project 1
       </div>
-      </footer>
+    </footer>
+
+    <!-- Script -->
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
