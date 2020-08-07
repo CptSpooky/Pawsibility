@@ -5,7 +5,7 @@ body,html {
 
 h2 {
   color: #181E30;
-  text-shadow: 2px 2px 4px #cf6d79;
+  text-shadow: 2px 2px 4px #ECEDEF;
 }
 
 .bg-hero {
@@ -17,7 +17,7 @@ h2 {
 .display-4 {
   font-weight: bold;
   text-shadow: 2px 2px 4px #cf6d79;
-  color: #A8C3B9;
+  color: #181E30;
 }
 
 .footer {
