@@ -39,9 +39,13 @@ $(document).ready(function() {
     //Build url string
     var url = "https://api.petfinder.com/v2/animals?"
 
-    // if Any breed is selected remove breed parameter 
+    // if Any breed, or no age is specificed remove breed/age parameters
     if (breed == "Any"){
       params = "type=" + species + "&location=" + zip + "&gender=" + gender + "&age=" + encodeURIComponent(age);
+    } else if (breed == "Any" && age == null){
+      params = "type=" + species + "&location=" + zip + "&gender=" + gender;
+    } else if (age == null) {
+      params = "type=" + species + "&location=" + zip + "&gender=" + gender + "&breed=" + breed;
     } else {
       params = "type=" + species + "&location=" + zip + "&gender=" + gender + "&age=" + encodeURIComponent(age) + "&breed=" + breed;
     }
