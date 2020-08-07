@@ -133,12 +133,17 @@ h2 {
   padding: 25px;
   max-height: 800px;
   margin-bottom: 10px;
-  overflow:scroll;
+  overflow:auto;
   -webkit-overflow-scrolling: touch;
 }
 
 .card-body{
   text-align: center;
+}
+
+.card-img-top{
+  max-height: 30rem;
+  max-width: 35rem;
 }
 
 .img-thumbnail {
@@ -156,8 +161,9 @@ h2 {
 }
 
 #map {
-  height: 400px;
-  margin: 75px 0 50px 0;
+  max-width: 30rem;
+  max-height: 25rem;
+  margin: 18px;
 }
 
 @media (max-width: 600px) {
