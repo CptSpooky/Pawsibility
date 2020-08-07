@@ -22,6 +22,11 @@ $(document).ready(function() {
 
   // Generates the breed list dependent on radio button selection
   function breedSelection(){
+
+    //Default dog
+    var animal = $('input:radio[name=exampleRadios]:checked').val();
+    populateBreeds(animal);
+
     //Breeds button activation
     $("#inline_test input[name='exampleRadios']").click(function(){
       
@@ -64,29 +69,31 @@ $(document).ready(function() {
   //When submit button is clicked
   submitBtn.on("click", function(event){
     event.preventDefault();
-    window.location.href = "results.html";
-    
-
-    var zipCode = $("#userZip").val();
+ 
+    var zipCode = $("#userZip").val()
     var speciesValue = $("input[name='exampleRadios']:checked").val();
     var breed = $("#breedSelect").val(); 
     var gender = $("#genderSelect option:selected").val();
     let ages = $("input[type='checkbox']:checked").map(function(){return $(this).val()}).get();
     
+    console.log(zipCode.length);
+     
+    if (isNaN(parseInt(zipCode)) || zipCode.length != 5) {
+      $("#userZip").val("");
+      $("#userZip").addClass("submit-fail");
+      $("#userZip").attr("placeholder", "Not valid");
+    } else {
+      // save inputs into local storage
+      localStorage.setItem('zipCode', zipCode);
+      localStorage.setItem('species', speciesValue);
+      localStorage.setItem('breed', breed);
+      localStorage.setItem('ages', ages); // is returning the value [object Object] in the local storage instead of the array of checkboxes
+      localStorage.setItem('gender', gender);
+
+      window.location.href = "results.html"; //go to results page
+
+    }
     
-
-    console.log(zipCode);
-    console.log(speciesValue);
-    console.log(breed);
-    console.log(ages); // console log age to test
-    console.log(gender);
-
-    // save inputs into local storage
-    localStorage.setItem('zipCode', zipCode);
-    localStorage.setItem('species', speciesValue);
-    localStorage.setItem('breed', breed);
-    localStorage.setItem('ages', ages); // is returning the value [object Object] in the local storage instead of the array of checkboxes
-    localStorage.setItem('gender', gender);
   }); 
 });
 

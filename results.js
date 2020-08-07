@@ -120,8 +120,10 @@ $(document).ready(function() {
 
             getCoordinates(petLocation);
 
-
           });
+
+          
+
         }  
       }
     });
