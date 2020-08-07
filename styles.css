@@ -123,6 +123,16 @@ h2 {
   position: relative;
 }
 
+
+
+.ml-1 {
+  margin-left: 20px !important;
+}
+
+.ml-2 {
+  margin-left: 7px !important;
+}
+
 /*results page*/
 
 .results-text {
