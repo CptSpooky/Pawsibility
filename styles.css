@@ -151,8 +151,13 @@ h2 {
   background-image: url("bg_white.jpg")
 }
 
+.hide {
+  display: none;
+}
+
 #map {
-  height: 180px;
+  height: 400px;
+  margin: 75px 0 50px 0;
 }
 
 @media (max-width: 600px) {
