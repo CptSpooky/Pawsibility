@@ -39,7 +39,14 @@ $(document).ready(function() {
               
           var breedSelect = $("#breedSelect");
           breedSelect.empty(); //clear out existing options
-    
+          
+          //any breed
+          var anyBreed = document.createElement("option");
+          anyBreed.value = "Any";
+          anyBreed.text = "Any";
+          breedSelect.append(anyBreed);
+
+          //generate breeds
           response.breeds.forEach(e => {
           
             var opt = document.createElement("option");
