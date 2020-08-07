@@ -31,6 +31,16 @@ h2 {
   border-top: 3px solid #A8C3B9;
 }
 
+.footer-results{
+  padding:5px;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #FDC161;
+  color: #ECEDEF;
+  border-top: 3px solid #A8C3B9;
+}
+
 .lead {
   font-weight:bold;
 }
