@@ -9,6 +9,7 @@ $(document).ready(function() {
   var organizationID = ""; //this is organizations ID
   var orgWebsite = ""; //this is the organizations website
   var params = ""; //parameter search for petfinder API
+  var addressDiv = $("#address");
 
   petFinderAccess();
 
@@ -61,7 +62,6 @@ $(document).ready(function() {
         //Generate pet list html
         function createList(){
           for (var i = 0; i < response.animals.length; i++) {
-          
 
             if (response.animals[i].primary_photo_cropped != null){
               var petList = $("<a>").addClass("nav-link active").attr("id", "result-list").attr("href", "#").attr("data-index", i);
@@ -70,13 +70,9 @@ $(document).ready(function() {
               
               petList = petList.append(petThumb, petName);
               $("#list-results").append(petList);
-            } else {
-                var petList = $("<a>").addClass("nav-link active").attr("id", "result-list").attr("href", "#").attr("data-index", i);
-                var petName = response.animals[i].name;
-                var petThumb = $("<img>").addClass("img-thumbnail");
-                
-                petList = petList.append(petThumb, petName);
-                $("#list-results").append(petList);
+            } 
+            else {
+              
               }  
           }
 
@@ -119,6 +115,7 @@ $(document).ready(function() {
             }
 
             getCoordinates(petLocation);
+
 
           });
         }  
