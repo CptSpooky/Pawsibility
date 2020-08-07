@@ -31,13 +31,18 @@ h2 {
   border-top: 3px solid #A8C3B9;
 }
 
-
 .lead {
   font-weight:bold;
 }
 
 .display-4 {
   font-weight: bolder;
+}
+
+.submit-fail {
+  border: solid;
+  border-color: #b91a1a !important;
+  border-width: 2px;
 }
 
 .btn-outline-primary {
@@ -122,8 +127,6 @@ h2 {
   margin-top: 200px;
   position: relative;
 }
-
-
 
 .ml-1 {
   margin-left: 20px !important;
