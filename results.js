@@ -101,10 +101,18 @@ $(document).ready(function() {
   // Fill pet card when selecting pet
   $("#list-results").on("click", function(event){
     
-    e = event.target;
-    var petIndex = e.dataset.index;
-    fillPetCard(petIndex);
+    //validate what pet is selected
+    if (event.target.id == "result-list"){
+      eTarget = event.target;
+      var petIndex = eTarget.dataset.index;
 
+      fillPetCard(petIndex);
+
+      $(".selected").removeClass("selected");
+ 
+      eTarget.classList.add("selected");
+
+   } else {}
   });
 
 
@@ -187,24 +195,44 @@ $(document).ready(function() {
     // renders the map on the results page
     mapboxgl.accessToken = 'pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw';
     var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: coords,
-    zoom: 15
+      container: 'map', // Container ID
+      style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
+      center: coords, // Starting position [lng, lat]
+      zoom: 12, // Starting zoom level
     });
+        
+    // RENDERS MARKER ON ADDRESS
+    
+    var marker = new mapboxgl.Marker() // Initialize a new marker
+      .setLngLat(coords) // Marker [lng, lat] coordinates
+      .addTo(map); // Add the marker to the map
 
-    // create the popup for the marker
-    var popup = new mapboxgl.Popup({ offset: 25 }).setText(
-    petLocation
-    );
-    
-    
-    // create the marker
-    var marker = new mapboxgl.Marker()
-    .setLngLat(coords)
-    .setPopup(popup) // sets a popup on this marker
-    .addTo(map);
-  
+    // After the map style has loaded on the page,
+    // add a source layer and default styling for a single point
+    map.on('load', function() {
+      map.addSource('single-point', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: []
+        }
+      });
+      map.addLayer({
+        id: 'point',
+        source: 'single-point',
+        type: 'circle',
+        paint: {
+          'circle-radius': 10,
+          'circle-color': '#448ee4'
+        }
+      });
+        // Listen for the `result` event from the Geocoder
+        // `result` event is triggered when a user makes a selection
+        // Add a marker at the result's coordinates
+        // geocoder.on('result', function(ev) {
+        //   map.getSource('single-point').setData(ev.result.geometry);
+        // });
+    });
   }
 
   // mapbox geocoding to turn pet address into coordinates for map
