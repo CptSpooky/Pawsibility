@@ -10,6 +10,7 @@ $(document).ready(function() {
   var orgWebsite = ""; //this is the organizations website
   var params = ""; //parameter search for petfinder API
   var addressDiv = $("#address");
+  var firstValidIndex = -1; //set as undefined
 
   petFinderAccess();
 
@@ -26,6 +27,7 @@ $(document).ready(function() {
     });
   }  
 
+  
   // petfinder API Get animals call
   function generateResults(accessToken){
 
@@ -60,172 +62,189 @@ $(document).ready(function() {
       headers: {"Authorization": "Bearer " + accessToken},
       success: function(response) {
         console.log(response);
-        createList();
         petData = response;
-
-        //Generate pet list html
-        function createList(){
-          for (var i = 0; i < response.animals.length; i++) {
-
-            if (response.animals[i].primary_photo_cropped != null){
-              var petList = $("<a>").addClass("nav-link active").attr("id", "result-list").attr("href", "#").attr("data-index", i);
-              var petName = response.animals[i].name;
-              var petThumb = $("<img>").addClass("img-thumbnail").attr("src", response.animals[i].primary_photo_cropped.small);
-              
-              petList = petList.append(petThumb, petName);
-              $("#list-results").append(petList);
-            } 
-            else {
-              
-              }  
-          }
-
-          // Pet Card
-          $("#list-results").on("click", function(event){
-            
-            e = event.target;
-            var petIndex = e.dataset.index;
-            var thisPet = petData.animals[petIndex];
-
-            //Organization where the animal is located
-            organizationID = thisPet.organization_id;
-            getOrgLocation();
-
-            if(thisPet.photos.length > 0){
-              $(".card-img-top").attr("src", thisPet.photos[0].full); // pet photo
-            } else {
-              // $(".card-img-top").attr("src", "https://via.placeholder.com/150");
-
-            }
-
-            $(".card-title").html(thisPet.name); // pet name
-
-            if(thisPet.description != null){
-            $(".card-text").html(thisPet.description); //pet description
-            } else {
-              $(".card-text").html("No description is available, check out the shelter website if available for more information!");
-            }  
-
-            
-            var locationArray = thisPet.contact.address;
-            petLocation = locationArray.city + ", " + locationArray.state + ", " + locationArray.postcode;
-
-            //Animals Location
-            if (thisPet.contact.address.address2 != null){
-              petLocation = locationArray.address2 + ", " + petLocation;
-            }
-            else if (thisPet.contact.address.address1 != null) {
-              petLocation = locationArray.address1 + ", " + petLocation;
-            }
-
-            getCoordinates(petLocation);
-
-          });
-
-          
-
-        }  
+        createList();
+        fillPetCard(firstValidIndex); // Fill petcard with first pet info
       }
     });
   }
 
 
-    //get organization website
-    function getOrgLocation() {
-      var urlOrg = "https://api.petfinder.com/v2/organizations/";
-      var params = organizationID;
-      urlOrg = urlOrg + params;
-      $.ajax({
-        type: "GET",
-        url: urlOrg,    
-        headers: {"Authorization": "Bearer " + petToken},
-        success: function(response) {
-          console.log(response);
-          console.log(urlOrg);
-          
-          orgWebsite = response.organization.website;
-          if(orgWebsite != null){
-            $("#shelterBtn").attr("href", "").attr("target", "_blank").removeClass("hide").text("Learn More");
-          } else {
-              $("#shelterBtn").addClass("hide").removeAttr("href", "target").text("N/A");
-            }
+  //Generate pet list html
+  function createList(){
+    for (var i = 0; i < petData.animals.length; i++) {
 
-          $("#shelterBtn").on("click", function(){
-            $("#shelterBtn").attr("href", orgWebsite);
-          });
-
+      if (petData.animals[i].primary_photo_cropped != null){
+        var petList = $("<a>").addClass("nav-link active").attr("id", "result-list").attr("href", "#").attr("data-index", i);
+        var petName = petData.animals[i].name;
+        var petThumb = $("<img>").addClass("img-thumbnail").attr("src", petData.animals[i].primary_photo_cropped.small);
+        
+        petList = petList.append(petThumb, petName);
+        $("#list-results").append(petList);
+        
+        if (firstValidIndex < 0){
+          firstValidIndex = i;
         }
-      }); 
+
+      } else {
+        // Generate nothing
+        }  
+    }
+
+    if (firstValidIndex < 0){
+      firstValidIndex = 0;
+    }
+
+  }  
+
+
+  // Fill pet card when selecting pet
+  $("#list-results").on("click", function(event){
+    
+    e = event.target;
+    var petIndex = e.dataset.index;
+    fillPetCard(petIndex);
+
+  });
+
+
+  //get organization website
+  function getOrgLocation() {
+    var urlOrg = "https://api.petfinder.com/v2/organizations/";
+    var params = organizationID;
+    urlOrg = urlOrg + params;
+    $.ajax({
+      type: "GET",
+      url: urlOrg,    
+      headers: {"Authorization": "Bearer " + petToken},
+      success: function(response) {
+        console.log(response);
+        console.log(urlOrg);
+        
+        orgWebsite = response.organization.website;
+        if(orgWebsite != null){
+          $("#shelterBtn").attr("href", "").attr("target", "_blank").removeClass("hide").text("Learn More");
+        } else {
+            $("#shelterBtn").addClass("hide").removeAttr("href", "target").text("N/A");
+          }
+
+        $("#shelterBtn").on("click", function(){
+          $("#shelterBtn").attr("href", orgWebsite);
+        });
+
+      }
+    }); 
+  }  
+
+
+  function fillPetCard (index){
+  
+    if(index >= petData.animals.length) { 
+      // wont run function if its trying to fill the card with an index that doesnt exist, if index is 0 petData cannot be greater than 0
+      return;
+    }
+
+    var thisPet = petData.animals[index];
+
+    //Organization where the animal is located
+    organizationID = thisPet.organization_id;
+    getOrgLocation();
+
+    if(thisPet.photos.length > 0){
+      $(".card-img-top").attr("src", thisPet.photos[0].full); // pet photo
+    } else {
+      //Generate nothing
+    }
+    
+
+    $(".card-title").html(thisPet.name); // pet name
+
+    if(thisPet.description != null){
+    $(".card-text").html(thisPet.description); //pet description
+    } else {
+      $(".card-text").html("Unfortunately no description is available.");
     }  
 
-
-
-
-
-  
-    function renderMarker(coords) {
-
-      // renders the map on the results page
-      mapboxgl.accessToken = 'pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw';
-      var map = new mapboxgl.Map({
-        container: 'map', // Container ID
-        style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
-        center: coords, // Starting position [lng, lat]
-        zoom: 12, // Starting zoom level
-      });
-          
-      // RENDERS MARKER ON ADDRESS
-      
-      var marker = new mapboxgl.Marker() // Initialize a new marker
-        .setLngLat(coords) // Marker [lng, lat] coordinates
-        .addTo(map); // Add the marker to the map
-  
-      // After the map style has loaded on the page,
-      // add a source layer and default styling for a single point
-      map.on('load', function() {
-        map.addSource('single-point', {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: []
-          }
-        });
-        map.addLayer({
-          id: 'point',
-          source: 'single-point',
-          type: 'circle',
-          paint: {
-            'circle-radius': 10,
-            'circle-color': '#448ee4'
-          }
-        });
-          // Listen for the `result` event from the Geocoder
-          // `result` event is triggered when a user makes a selection
-          // Add a marker at the result's coordinates
-          // geocoder.on('result', function(ev) {
-          //   map.getSource('single-point').setData(ev.result.geometry);
-          // });
-      });
-    }
-  
-    // mapbox geocoding to turn pet address into coordinates for map
     
-    function getCoordinates(address) {
-      var apiToken = "pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw";
-      // var shelterAddress = localStorage.getItem(petLocation); // add the address of the shelter from data pulled from petfinder APU
-      console.log(petLocation);
-      var mapboxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + address + ".json?access_token=" + apiToken;
-  
-      // var temp = "https://api.mapbox.com/geocoding/v5/mapbox.places/501 innovation ave morrisville.json?access_token=pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw";
-    
-      $.ajax({
-        url: mapboxURL,
-        method: 'GET'
-      }).then(function(response) {
-        console.log('coordinates:', response.features[0].center);
-        // console.log(JSON.parse(localStorage.getItem(petLocation)));
-        renderMarker(response.features[0].center);
-      });
+    var locationArray = thisPet.contact.address;
+    petLocation = locationArray.city + ", " + locationArray.state + ", " + locationArray.postcode;
+
+    //Animals Location
+    if (thisPet.contact.address.address2 != null){
+      petLocation = locationArray.address2 + ", " + petLocation;
     }
+    else if (thisPet.contact.address.address1 != null) {
+      petLocation = locationArray.address1 + ", " + petLocation;
+    }
+
+    getCoordinates(petLocation);
+  }
+
+
+  //Map 
+  function renderMarker(coords) {
+
+    // renders the map on the results page
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw';
+    var map = new mapboxgl.Map({
+      container: 'map', // Container ID
+      style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
+      center: coords, // Starting position [lng, lat]
+      zoom: 12, // Starting zoom level
+    });
+        
+    // RENDERS MARKER ON ADDRESS
+    
+    var marker = new mapboxgl.Marker() // Initialize a new marker
+      .setLngLat(coords) // Marker [lng, lat] coordinates
+      .addTo(map); // Add the marker to the map
+
+    // After the map style has loaded on the page,
+    // add a source layer and default styling for a single point
+    map.on('load', function() {
+      map.addSource('single-point', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: []
+        }
+      });
+      map.addLayer({
+        id: 'point',
+        source: 'single-point',
+        type: 'circle',
+        paint: {
+          'circle-radius': 10,
+          'circle-color': '#448ee4'
+        }
+      });
+        // Listen for the `result` event from the Geocoder
+        // `result` event is triggered when a user makes a selection
+        // Add a marker at the result's coordinates
+        // geocoder.on('result', function(ev) {
+        //   map.getSource('single-point').setData(ev.result.geometry);
+        // });
+    });
+  }
+
+  // mapbox geocoding to turn pet address into coordinates for map
+  
+  function getCoordinates(address) {
+    var apiToken = "pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw";
+    // var shelterAddress = localStorage.getItem(petLocation); // add the address of the shelter from data pulled from petfinder APU
+    console.log(petLocation);
+    var mapboxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + address + ".json?access_token=" + apiToken;
+
+    // var temp = "https://api.mapbox.com/geocoding/v5/mapbox.places/501 innovation ave morrisville.json?access_token=pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw";
+  
+    $.ajax({
+      url: mapboxURL,
+      method: 'GET'
+    }).then(function(response) {
+      console.log('coordinates:', response.features[0].center);
+      // console.log(JSON.parse(localStorage.getItem(petLocation)));
+      renderMarker(response.features[0].center);
+    });
+  }
   
 });
