@@ -4,7 +4,7 @@ Project 1 - Team 5'
 Deployed on Github pages [Pawsibilites-Find your furever friend!](https://cptspooky.github.io/Pawsibility/)
 
 ## Introduction
-Pawsibilites was created to be a user responsive web application to help its user conveniently search for their next potential pet through animal adoption. The users input will access Petfinder.com API for cats or dogs of all breeds that are available for adoption and will show user a map of the shelters location using MapBox API. This project is created with seperate HTML, CSS, and Javascript files.
+Pawsibilites was created to be a user responsive web application to help its user conveniently search for their next potential pet through animal adoption. The users input will access Petfinder.com API for cats or dogs of all breeds that are available for adoption and will show user a map of the shelters location using MapBox API. This project is created with separate HTML, CSS, and Javascript files.
 
 ![Home Page](home_pg.jpg)
 
