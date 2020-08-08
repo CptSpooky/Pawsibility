@@ -205,3 +205,10 @@ h2 {
 .tab-content {
   margin-bottom: 100px;
 }
+
+.selected {
+  border: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+  background-color: white;
+}
