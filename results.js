@@ -195,56 +195,32 @@ $(document).ready(function() {
     // renders the map on the results page
     mapboxgl.accessToken = 'pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw';
     var map = new mapboxgl.Map({
-      container: 'map', // Container ID
-      style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
-      center: coords, // Starting position [lng, lat]
-      zoom: 12, // Starting zoom level
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v10',
+    center: coords,
+    zoom: 15
     });
-        
-    // RENDERS MARKER ON ADDRESS
-    
-    var marker = new mapboxgl.Marker() // Initialize a new marker
-      .setLngLat(coords) // Marker [lng, lat] coordinates
-      .addTo(map); // Add the marker to the map
 
-    // After the map style has loaded on the page,
-    // add a source layer and default styling for a single point
-    map.on('load', function() {
-      map.addSource('single-point', {
-        type: 'geojson',
-        data: {
-          type: 'FeatureCollection',
-          features: []
-        }
-      });
-      map.addLayer({
-        id: 'point',
-        source: 'single-point',
-        type: 'circle',
-        paint: {
-          'circle-radius': 10,
-          'circle-color': '#448ee4'
-        }
-      });
-        // Listen for the `result` event from the Geocoder
-        // `result` event is triggered when a user makes a selection
-        // Add a marker at the result's coordinates
-        // geocoder.on('result', function(ev) {
-        //   map.getSource('single-point').setData(ev.result.geometry);
-        // });
-    });
+    
+    // create the popup
+    var popup = new mapboxgl.Popup({ offset: 25 }).setText(
+    petLocation
+    );
+    
+    // create the marker
+    new mapboxgl.Marker()
+    .setLngLat(coords)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
   }
 
   // mapbox geocoding to turn pet address into coordinates for map
   
   function getCoordinates(address) {
     var apiToken = "pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw";
-    // var shelterAddress = localStorage.getItem(petLocation); // add the address of the shelter from data pulled from petfinder APU
     console.log(petLocation);
     var mapboxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + address + ".json?access_token=" + apiToken;
 
-    // var temp = "https://api.mapbox.com/geocoding/v5/mapbox.places/501 innovation ave morrisville.json?access_token=pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw";
-  
     $.ajax({
       url: mapboxURL,
       method: 'GET'
