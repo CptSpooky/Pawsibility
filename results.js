@@ -192,7 +192,8 @@ $(document).ready(function() {
     center: coords,
     zoom: 15
     });
-    // create the popup
+
+    // create the popup for the marker
     var popup = new mapboxgl.Popup({ offset: 25 }).setText(
     petLocation
     );
