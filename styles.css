@@ -148,6 +148,10 @@ h2 {
 
 /*results page*/
 
+.cancel-margin {
+  margin-right: 0px;
+}
+
 .results-text {
   padding: 25px; 
 }
@@ -176,7 +180,9 @@ h2 {
 }
 
 .bg-results {
-  background-image: url("bg_white.jpg")
+  background-image: url("bg_white.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .hide {
