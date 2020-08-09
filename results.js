@@ -93,10 +93,19 @@ $(document).ready(function() {
 
     if (firstValidIndex < 0){
       firstValidIndex = 0;
+      $("#noResultsModal").addClass("show").attr("style", "display: block;");
+      $(".blackbox").removeClass("hide")
+      $("#hidePetCard").addClass("hide")
+
+
     }
 
   }  
 
+  // When no results modal is shown and zipcode button is clicked
+  $("#noResultsBtn").on("click", function(event){
+    window.location.href = "index.html"; //go to home page
+  });
 
   // Fill pet card when selecting pet
   $("#list-results").on("click", function(event){

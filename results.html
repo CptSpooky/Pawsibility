@@ -48,33 +48,56 @@
       </div>
     </nav>
 
-    <!--Results list title-->
-    <div class="results-text">
-    <h2>Here are your pawsibilities...</h2>
-    </div>
-
-    <!--Results list-->
-    <div class="row cancel-margin">
-      <div class="col-md-3">
-        <div class="list-group" id="list-results" role="tablist">
-          <!--Generated list goes here-->
+    <!-- Modal in case no results are shown -->
+    <div class="modal fade" id="noResultsModal" tabindex="-1" role="dialog" aria-labelledby="noResultsCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="noResultsTitle">No Results Found</h5>
+          </div>
+          <div class="modal-body">
+            Unfortunately there are no furever friends in your area. 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="noResultsBtn">Try Another Zip Code</button>
+          </div>
         </div>
       </div>
-      
-      <!--Pet specifics-->
-      <div class="col-md-9 ">
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="list-chosen-result" role="tabpanel" aria-labelledby="list-results-list"></div>
-            <div class="card" style="width: 35rem;">  
-            <img class="card-img-top" src="https://via.placeholder.com/150" alt="Picture of chosen pet">
-            <div class="card-body">
-              <h5 class="card-title">Pet Name</h5>
-              <p class="card-text">Full Description goes here.</p>
-              <a href="" target="" class="btn btn-primary" id="shelterBtn">Learn More</a>
-              <div class="card" id="map" style="width: 33rem; height: 15rem;">
-                <div class="card-body">
-                  <div id="map">
-                    <!--Map displayed here-->
+    </div>
+
+    <div class="blackbox hide">
+      <!--Will appear if no results are found-->
+    </div>
+
+    <div id="hidePetCard">
+      <!--Results list title-->
+      <div class="results-text">
+      <h2>Here are your pawsibilities...</h2>
+      </div>
+
+      <!--Results list-->
+      <div class="row cancel-margin">
+        <div class="col-md-3">
+          <div class="list-group" id="list-results" role="tablist">
+            <!--Generated list goes here-->
+          </div>
+        </div>
+        
+        <!--Pet specifics-->
+        <div class="col-md-9 ">
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-chosen-result" role="tabpanel" aria-labelledby="list-results-list"></div>
+              <div class="card" style="width: 35rem;">  
+              <img class="card-img-top" src="https://via.placeholder.com/150" alt="Picture of chosen pet">
+              <div class="card-body">
+                <h5 class="card-title">Pet Name</h5>
+                <p class="card-text">Full Description goes here.</p>
+                <a href="" target="" class="btn btn-primary" id="shelterBtn">Learn More</a>
+                <div class="card" id="map" style="width: 33rem; height: 15rem;">
+                  <div class="card-body">
+                    <div id="map">
+                      <!--Map displayed here-->
+                    </div>
                   </div>
                 </div>
               </div>
@@ -83,6 +106,7 @@
         </div>
       </div>
     </div>
+
 
     <!--Footer-->
     <footer class="footer-results">
