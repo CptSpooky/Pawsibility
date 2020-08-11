@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-
-
   // global variables
   var petToken = "";
   var petData = {};
@@ -9,8 +7,7 @@ $(document).ready(function() {
   var organizationID = ""; //this is organizations ID
   var orgWebsite = ""; //this is the organizations website
   var params = ""; //parameter search for petfinder API
-  var addressDiv = $("#address");
-  var firstValidIndex = -1; //set as undefined
+  var firstValidIndex = -1; //set as invalid
 
   petFinderAccess();
 
@@ -53,7 +50,6 @@ $(document).ready(function() {
     }
 
     url = url + params;
-    console.log(url);
 
     //API access
     $.ajax({
@@ -61,10 +57,9 @@ $(document).ready(function() {
       url: url,    
       headers: {"Authorization": "Bearer " + accessToken},
       success: function(response) {
-        console.log(response);
         petData = response;
         createList();
-        fillPetCard(firstValidIndex); // Fill petcard with first pet info
+        fillPetCard(firstValidIndex); // Fill petcard with first valid pet info
       }
     });
   }
@@ -82,6 +77,7 @@ $(document).ready(function() {
         petList = petList.append(petThumb, petName);
         $("#list-results").append(petList);
         
+        // if pet doesnt have a photo this doesnt run. The first time it does run, firstValidIndex is permanently set to the index of the first animal who has a photo. This is so that the pet card index matches the index on the list, since some indexs wont be valid
         if (firstValidIndex < 0){
           firstValidIndex = i;
         }
@@ -91,6 +87,7 @@ $(document).ready(function() {
         }  
     }
 
+    // makes sure that if you go through all of the animals and none have a photo, the list starts at 0 despite how many animals are found. You set it to 0 as a safeguard in case its called later because -1 will make the program crash.
     if (firstValidIndex < 0){
       firstValidIndex = 0;
       $("#noResultsModal").addClass("show").attr("style", "display: block;");
@@ -107,7 +104,7 @@ $(document).ready(function() {
     window.location.href = "index.html"; //go to home page
   });
 
-  // Fill pet card when selecting pet
+  // Runs the petcard function when selecting pet
   $("#list-results").on("click", function(event){
     
     //validate what pet is selected
@@ -115,6 +112,7 @@ $(document).ready(function() {
       eTarget = event.target;
       var petIndex = eTarget.dataset.index;
 
+      //giving petcard index of pet
       fillPetCard(petIndex);
 
       $(".selected").removeClass("selected");
@@ -135,8 +133,6 @@ $(document).ready(function() {
       url: urlOrg,    
       headers: {"Authorization": "Bearer " + petToken},
       success: function(response) {
-        console.log(response);
-        console.log(urlOrg);
         
         orgWebsite = response.organization.website;
         if(orgWebsite != null){
@@ -153,11 +149,20 @@ $(document).ready(function() {
     }); 
   }  
 
+  //decodes html for pet description
+  function decodeHtml(str) {
+    var doc = new DOMParser().parseFromString(str, "text/html");
+    str = doc.documentElement.textContent;
+    return str.replace(/&#(\d+);/g, function(match, dec) {
+      return String.fromCharCode(dec);
+    });
+  };
 
+  //fillspetCard
   function fillPetCard (index){
   
     if(index >= petData.animals.length) { 
-      // wont run function if its trying to fill the card with an index that doesnt exist, if index is 0 petData cannot be greater than 0
+      // wont run function if its trying to fill the card with an index that doesnt exist, if index is 0 petData.length cannot be greater than 0
       return;
     }
 
@@ -177,7 +182,7 @@ $(document).ready(function() {
     $(".card-title").html(thisPet.name); // pet name
 
     if(thisPet.description != null){
-    $(".card-text").html(thisPet.description); //pet description
+    $(".card-text").html(decodeHtml(thisPet.description)); //pet description
     } else {
       $(".card-text").html("Unfortunately no description is available.");
     }  
@@ -227,15 +232,12 @@ $(document).ready(function() {
   
   function getCoordinates(address) {
     var apiToken = "pk.eyJ1IjoiY3B0c3Bvb2t5IiwiYSI6ImNrZDlpcDRheDA0b2IzM2pxZDZzNnI2Y2cifQ.0GQCDJlDIwPOy_9uR0Vgsw";
-    console.log(petLocation);
     var mapboxURL = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + address + ".json?access_token=" + apiToken;
 
     $.ajax({
       url: mapboxURL,
       method: 'GET'
     }).then(function(response) {
-      console.log('coordinates:', response.features[0].center);
-      // console.log(JSON.parse(localStorage.getItem(petLocation)));
       renderMarker(response.features[0].center);
     });
   }

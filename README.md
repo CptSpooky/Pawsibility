@@ -50,7 +50,7 @@ The createList functions generates the list of animals pulled by the conditions 
 
 The fillPetCard function was passed with the value of index( i, the index of the animal if there are actually results). The index is tested against the data of the results list (petData.animals.length) and exits the function if there are no results or non existant results. The shelter's organization ID is stored in its variable. and the getOrgLocation function is activated. The rest of the function fills in the pet name, description, photo, and builds the address the pet is located. This string is passed into the getCoordinates function.
 
-![Results4](https://user-images.githubusercontent.com/66426144/89742411-ad2b3c80-da67-11ea-86d4-4e32f66f4b10.png)
+![Results4](https://user-images.githubusercontent.com/66426144/89934098-1339d000-dbde-11ea-94eb-228291db7f24.png)
 
 ### The MapBox API
 The pet location is passed into the getCoordinates function, where the MapBox API is utilized to draw out the coordinates by address input. These coordinates are then passed into the renderMarker function and used to generate the map at the pets location, and display the pet address with a marker.
@@ -76,8 +76,9 @@ The pet location is passed into the getCoordinates function, where the MapBox AP
 * Bootstrap
 * GoogleFonts
 
-
-
-
-
+## Credits
+[Jinhi Ahn] (https://github.com/JinhiA) : Results page HTML/CSS
+[Mark Speer] (https://github.com/mark-speer) : Homepage and modal HTML/CSS
+[Garrett Hudson] (https://github.com/ghudson46) : MapBox API/map generation and local storage
+[Danielle Varela] (https://github.com/CptSpooky) : PetFinder API/results generation
 
