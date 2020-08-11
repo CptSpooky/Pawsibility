@@ -77,8 +77,8 @@ The pet location is passed into the getCoordinates function, where the MapBox AP
 * GoogleFonts
 
 ## Credits
-[Jinhi Ahn] (https://github.com/JinhiA) : Results page HTML/CSS
-[Mark Speer] (https://github.com/mark-speer) : Homepage and modal HTML/CSS
-[Garrett Hudson] (https://github.com/ghudson46) : MapBox API/map generation and local storage
-[Danielle Varela] (https://github.com/CptSpooky) : PetFinder API/results generation
+* [Jinhi_Ahn] (https://github.com/JinhiA) : Results page HTML/CSS
+* [Mark_Speer] (https://github.com/mark-speer) : Homepage and modal HTML/CSS
+* [Garrett_Hudson] (https://github.com/ghudson46) : MapBox API/map generation and local storage
+* [Danielle_Varela] (https://github.com/CptSpooky) : PetFinder API/results generation
 
