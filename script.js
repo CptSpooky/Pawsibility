@@ -2,7 +2,6 @@ $(document).ready(function() {
 
   // global variables
   var petToken = "";
-  var speciesValue = $("input[name='exampleRadios']:checked");
   var submitBtn = $("#critSubmit");
 
   // petfinder API Post access call
@@ -72,7 +71,7 @@ $(document).ready(function() {
       localStorage.setItem('zipCode', zipCode);
       localStorage.setItem('species', speciesValue);
       localStorage.setItem('breed', breed);
-      localStorage.setItem('ages', ages); // is returning the value [object Object] in the local storage instead of the array of checkboxes
+      localStorage.setItem('ages', ages); 
       localStorage.setItem('gender', gender);
 
       window.location.href = "results.html"; //go to results page
@@ -81,13 +80,3 @@ $(document).ready(function() {
     
   }); 
 });
-
-
-
-
-
-
-// curl -d "grant_type=client_credentials&client_id=VPazYlCS5jiHVKYEa29a1eAD74ZNDsYvXJ0JYtdykdrfmRjsiC&client_secret=EyTeV2BZo5Nve7dLybgTiCKaZ4GxNA9pFcIoaGGu" https://api.petfinder.com/v2/oauth2/token
-
-
-// curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJWUGF6WWxDUzVqaUhWS1lFYTI5YTFlQUQ3NFpORHNZdlhKMEpZdGR5a2RyZm1SanNpQyIsImp0aSI6ImVlNWM2Njk1Y2RkOGM2YTkwYjRmMWE3ODU4MGJiZDYzMTQ2NGQzMGY2OTk0YjQwYWFmZmZhN2Y5YTJmODRiYzJhMzFjMjY3NjcxOGNiM2VmIiwiaWF0IjoxNTk2NDAwODM5LCJuYmYiOjE1OTY0MDA4MzksImV4cCI6MTU5NjQwNDQzOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.QugEXRT3gCaAgl95CR2IrhkH-3MYquQy5JG-W3vTF-q_RADKO3voNPk1tHHVupYH1ugDZTqfAUMLqlE5dy9KcDd5YDzY3dOlQbNCV4AHWRZ81_C5V4oqfwhNtpXQAzjmT0xX8bp19_M7mE_QEaJndbvTqg8Is9ssvFD_CwQ72w7NsLgHEn_dBk77tCdjhUzr1dwGlpMIKVp7o1ylT9rts1EhLFcxEOVsIY-LnQfSMW-7v8dZ5Bhy1eKQiPQ0HWZTzJ6ceekrtyW_DdJP2ahVbRUdMPjHGKRMvKGdeHSxtMXLbqruskjx6VO5cxW3LxO139kdQEXjaWhCy1NWVpydZw" GET https://api.petfinder.com/v2/animals?type=dog&page=2
