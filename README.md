@@ -44,7 +44,7 @@ the generateResults function grabs the stored user input from local storage and 
 
 ![Results2](https://user-images.githubusercontent.com/66426144/89742395-7c4b0780-da67-11ea-96fe-036335ee7b54.png)
 
-The createList functions generates the list of animals pulled by the conditions set by the user which were stringed together in the API url. Due to the incomplete database we decided to filter out pets that did not have a photo stored. Within the If conditional that builds the html for the list, a secondary If conditional tests the firstValidIndex (which originally is set to -1) to see if its less than 0, if so then no list is generated because the first index would have to be 0 if any results were generated. This is again tested outside of the for loop conditional with another If firstValidIndex is less than 0 (no results were found) create an html modal to lead the user to the home page.
+The createList functions generates the list of animals pulled by the conditions set by the user which were stringed together in the API url. Due to the incomplete database we decided to filter out pets that did not have a photo stored and it caused a discrepency with the animal on the list vs the animal shown on the card. This was fixed by comparing indexs with firstValidIndex which is permanently set to the index of the first animal who has a photo. This is so that the pet card index matches the index on the list.
 
 ![Results3](https://user-images.githubusercontent.com/66426144/89742397-7ead6180-da67-11ea-8351-ef55bcaafbb4.png)
 
