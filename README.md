@@ -76,6 +76,9 @@ The pet location is passed into the getCoordinates function, where the MapBox AP
 * Bootstrap
 * GoogleFonts
 
+## License
+MIT
+
 ## Credits
 * Jinhi Ahn (https://github.com/JinhiA) : Results page HTML/CSS
 * Mark Speer (https://github.com/mark-speer) : Homepage and modal HTML/CSS
